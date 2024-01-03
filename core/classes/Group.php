@@ -2,7 +2,7 @@
 
 class Group {
 
-    private $pdo; // Assume there is a PDO connection in the class
+    private $pdo;
 
     public function __construct($pdo) {
         $this->pdo = $pdo;
