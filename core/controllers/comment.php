@@ -1,7 +1,7 @@
 <?php
 
 
-global $getFromU;
+global $getFromU, $getFromD;
 include '../init.php';
 
 if(isset($_POST['comment']) && !empty($_POST['comment'])){
@@ -11,8 +11,7 @@ if(isset($_POST['comment']) && !empty($_POST['comment'])){
 
     $getFromU->create('comments', array('comment' => $comment, 'commentOn' => $dropID, 'commentBy' => $user_id));
 
-    $comments = $getFromT->comments($dropID);
-    $tweet = $getFromT->tweetPopup($dropID);
+    $comments = $getFromD->comments($dropID);
 
     foreach ($comments as $comment) {
         //some HTML code
