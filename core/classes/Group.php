@@ -1,6 +1,6 @@
 <?php
 
-class Group {
+class Group {  //Array
 
     private $pdo;
 
