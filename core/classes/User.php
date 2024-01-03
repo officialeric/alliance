@@ -20,7 +20,7 @@ class User
         $stmt = $this->pdo->prepare("INSERT INTO `users` (`email`, `password`, `username`, `profileImage`, `profileCover`) VALUES (:email, :password, :username, 'assets/images/defaultprofileimage.png', 'assets/images/defaultCoverImage.png')");
         $stmt->bindParam(":email", $email, PDO::PARAM_STR);
         $stmt->bindParam(":password", $passwordHash , PDO::PARAM_STR);
-        $stmt->bindParam(":screenName", $username, PDO::PARAM_STR);
+        $stmt->bindParam(":username", $username, PDO::PARAM_STR);
         $stmt->execute();
 
         $user_id = $this->pdo->lastInsertId();
@@ -221,7 +221,7 @@ class User
     }
 
     public function search($search){
-        $stmt = $this->pdo->prepare("SELECT `user_id`,`username`,`screenName`,`profileImage`,`profileCover` FROM `users` WHERE `username` LIKE ? OR `screenName` LIKE ?");
+        $stmt = $this->pdo->prepare("SELECT `user_id`,`username`,`username`,`profileImage`,`profileCover` FROM `users` WHERE `username` LIKE ? OR `username` LIKE ?");
         $stmt->bindValue(1, $search.'%', PDO::PARAM_STR);
         $stmt->bindValue(2, $search.'%', PDO::PARAM_STR);
         $stmt->execute();
