@@ -9,7 +9,7 @@ class Group {  //Array
     }
 
     // Method to create a new group
-    public function createGroup($groupName, $description, $creatorUserId) {
+    public function createGroup($groupName, $description, $creatorUserId , $type ) {
         // Implementation to insert group data into the database
     }
 

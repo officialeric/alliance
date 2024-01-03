@@ -20,7 +20,7 @@ class User
         $stmt = $this->pdo->prepare("INSERT INTO `users` (`email`, `password`, `username`, `profileImage`, `profileCover`) VALUES (:email, :password, :username, 'assets/images/defaultprofileimage.png', 'assets/images/defaultCoverImage.png')");
         $stmt->bindParam(":email", $email, PDO::PARAM_STR);
         $stmt->bindParam(":password", $passwordHash , PDO::PARAM_STR);
-        $stmt->bindParam(":screenName", $screenName, PDO::PARAM_STR);
+        $stmt->bindParam(":screenName", $username, PDO::PARAM_STR);
         $stmt->execute();
 
         $user_id = $this->pdo->lastInsertId();
