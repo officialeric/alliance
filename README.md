@@ -1,5 +1,5 @@
  <p align="center" style="width: 8em; "><a href="#" target="">
-<img src="assets/alliance_logo.png" width="300" alt="alliance Logo">
+<img src="assets/images/alliance_logo.png" width="300" alt="alliance Logo">
 </a></p>
 
 
