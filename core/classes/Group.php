@@ -11,11 +11,43 @@ class Group {  //Array
     // Method to create a new group
     public function createGroup($groupName, $description, $creatorUserId , $type ) {
         // Implementation to insert group data into the database
+
+        try {
+            // SQL query to insert group data into the database
+            $sql = "INSERT INTO groups (group_name, description, creator_user_id , type , banner , profile_img) 
+                    VALUES (:group_name, :description, :creator_user_id , :type , 'assets/images/defaultCoverImage.png' , 'assets/images/defaultgroupprofileimage.png')";
+
+            // Prepare the SQL statement
+            $stmt = $this->pdo->prepare($sql);
+
+            // Bind parameters
+            $stmt->bindParam(':group_name', $groupName);
+            $stmt->bindParam(':description', $description);
+            $stmt->bindParam(':creator_user_id', $creatorUserId);
+            $stmt->bindParam(':type', $type);
+
+            // Execute the prepared statement
+            $stmt->execute();
+
+            // Return the last inserted ID (if needed)
+            return $this->pdo->lastInsertId();
+
+        } catch (PDOException $e) {
+            // Handle the exception (e.g., log error, return a specific value, etc.)
+            echo "Error: " . $e->getMessage();
+            return false; // or throw an exception
+        }
     }
 
     // Method to retrieve information about a specific group
-    public function getGroupDetails($groupId) {
+    public function getGroupDetails($group_id) {
         // Implementation to fetch group details from the database
+
+        $stmt = $this->pdo->prepare('SELECT * FROM `groups` WHERE `group_id` = :group_id');
+        $stmt->bindParam(':group_id', $group_id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
     // Method to add a user to a group
