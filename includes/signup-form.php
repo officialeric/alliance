@@ -33,5 +33,5 @@ if(isset($_POST['signup'])){
         }
     }
 }
+?>
 
-//User interface for sign up below

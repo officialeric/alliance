@@ -23,8 +23,4 @@ if(isset($_POST['login']) && !empty($_POST['login'])) {
         $errorMsg = "Please enter username and password!";
     }
 }
-
-//User interface for login page Below
-
-
-
+?>
